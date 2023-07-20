@@ -8,13 +8,46 @@
   --brand900: #0e3426;
 }
 
+/*** GLOBAL ***/
 * {
   font-family: 'Raleway', sans-serif;
   color: var(--brand900);
   margin: 0;
   padding: 0;
 }
-
+a {
+  text-decoration: none;
+  color: var(--brand900);
+}
+h1 {
+  color: white;
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+}
+h2 {
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+h3 {
+  margin-bottom: 20px;
+}
+/*** GLOBAL ***/
+/********************/
+/*** UTILITY ***/
+.mediumWeight {
+  font-weight: 600;
+}
+.myButton {
+  border: none;
+  background-color: var(--brand500);
+  color: white;
+  padding: 10px;
+  padding-inline: 15px;
+}
+/*** UTILITY ***/
+/********************/
+/*** NAVBAR ***/
 .Navbar {
   background-color: var(--brand500);
   padding-top: 30px;
@@ -28,71 +61,18 @@
 .accountIcon {
   color: white;
 }
-.Search {
-  padding: 20px;
-
-  display: inline-flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: white;
-  position: fixed;
-  border-bottom: 1px solid var(--brand500);
-  width: 100%;
+/*** NAVBAR ***/
+/********************/
+/*** SINGLE SPELL ***/
+.singleSpellDetails {
+  margin-top: 20px;
+  margin-bottom: 100px;
 }
-input[type='text'] {
-  box-sizing: border-box;
-  border: 1px solid var(--brand500);
-  border-radius: 2px;
-  -webkit-transition: 0.5s;
-  transition: all 0.5s;
-  outline: none;
-  padding-left: 8px;
-}
-
-input[type='text']:focus {
-  border: 1px solid var(--brand700);
-}
-
-input[type='text']::placeholder {
-  color: var(--brand500);
-}
-.filterButton {
-  color: var(--brand500);
-}
-.BottomNav {
-  display: inline-flex;
-  justify-content: center;
-  z-index: 2;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
+/*** SINGLE SPELL ***/
+/********************/
+/*** ALL SPELLS ***/
 .allSpells {
   padding-inline: 20px;
-  margin-top: 80px;
-}
-
-.BottomNav button {
-  width: calc(100vw / 3);
-  border: none;
-  padding: 10px;
-  background-color: var(--brand100);
-}
-.BottomNav .buttonActive {
-  background-color: var(--brand500);
-  color: white;
-}
-
-.spellList {
-  text-overflow: clip;
-  overflow-wrap: normal;
-}
-
-h1 {
-  color: white;
-  margin: 0;
-  padding: 0;
-  font-weight: bold;
 }
 
 table {
@@ -124,3 +104,96 @@ td:nth-child(2) {
 td:nth-child(3) {
   text-align: end;
 }
+.Search {
+  padding: 20px;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border-bottom: 1px solid var(--brand500);
+  margin-bottom: 20px;
+  width: 100%;
+}
+input[type='text'] {
+  box-sizing: border-box;
+  border: 1px solid var(--brand500);
+  border-radius: 2px;
+  -webkit-transition: 0.5s;
+  transition: all 0.5s;
+  outline: none;
+  padding-left: 8px;
+}
+
+input[type='text']:focus {
+  border: 1px solid var(--brand700);
+}
+
+input[type='text']::placeholder {
+  color: var(--brand500);
+}
+.filterButton {
+  color: var(--brand500);
+}
+/*** ALL SPELLS ***/
+/********************/
+/*** BOTTOM NAV ***/
+.BottomNav {
+  display: inline-flex;
+  justify-content: center;
+  z-index: 2;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+.BottomNav a {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  width: calc(100vw / 3);
+  border: none;
+  padding: 10px;
+  background-color: var(--brand100);
+}
+.BottomNav .buttonActive {
+  background-color: var(--brand500);
+  color: white;
+}
+/*** BOTTOM NAV ***/
+/********************/
+/*** MY SPELLS ***/
+.spellbook ul {
+  list-style: none;
+  margin-top: 20px;
+  padding: 0;
+  color: var(--brand900);
+}
+.spellbook li {
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+.equipButton {
+  border: 1px solid var(--brand500);
+  color: var(--brand500);
+  padding-inline: 20px;
+  background-color: white;
+  box-sizing: border-box;
+  font-weight: 500;
+  min-width: 150px;
+}
+.equippedButton {
+  border: 1px solid var(--brand500);
+  color: white;
+  padding-inline: 20px;
+  background-color: var(--brand500);
+  box-sizing: border-box;
+  font-weight: 500;
+  min-width: 150px;
+}
+
+.spellEquip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+/*** MY SPELLS ***/
