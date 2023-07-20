@@ -35,7 +35,7 @@ This app was build solely by me. I used documentation from React, Express, Mongo
 
 MIT License
 
-Copyright (c) [year] [fullname]
+Copyright (c) 2023 The Casters Companion
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
