@@ -2,7 +2,7 @@
 
 ## Description
 
-I recently joined a new DND group and decided on making a Wizard character. Since casting spells is a complex thing I decided to create an app to assist in this. After looking at a couple of the apps on the Android store I was disatisfied. The styling was not the best and they just felt overall bad. The functionality was there for sure, but if I am going to be using an app a lot I want to like the way it looks.  This app helps DND characters who cast spells. Spells are one of the more complex things in DND and this app helps simplify it. I was looking for a good project to learn the MERN stack with and this seemed like a complex enough app that I thought it would be a great teacher.
+I recently joined a new DND group and decided on making a Wizard character. Since casting spells is a complex thing I decided to create an app to assist in this. After looking at a couple of the apps on the Android store I was disatisfied. The styling was not the best and they just felt overall bad. The functionality was there for sure, but if I am going to be using an app a lot I want to like the way it looks. This app helps DND characters who cast spells. Spells are one of the more complex things in DND and this app helps simplify it. I was looking for a good project to learn the MERN stack with and this seemed like a complex enough app that I thought it would be a great teacher.
 
 ## Table of Contents (Optional)
 
@@ -29,7 +29,7 @@ To add a screenshot, create an `assets/images` folder in your repository and upl
 
 ## Credits
 
-This app was build solely by me. I used documentation from React, Express, MongoDB, and Node to help me. 
+This app was build solely by me. I used documentation from React, Express, MongoDB, and Node to help me. For authentication I watched a tutorial on YouTube from The Net Ninja.
 
 ## License
 
@@ -54,6 +54,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
 ---
 
 ## Features
@@ -79,23 +80,23 @@ diverse, inclusive, and healthy community.
 Examples of behavior that contributes to a positive environment for our
 community include:
 
-* Demonstrating empathy and kindness toward other people
-* Being respectful of differing opinions, viewpoints, and experiences
-* Giving and gracefully accepting constructive feedback
-* Accepting responsibility and apologizing to those affected by our mistakes,
+- Demonstrating empathy and kindness toward other people
+- Being respectful of differing opinions, viewpoints, and experiences
+- Giving and gracefully accepting constructive feedback
+- Accepting responsibility and apologizing to those affected by our mistakes,
   and learning from the experience
-* Focusing on what is best not just for us as individuals, but for the overall
+- Focusing on what is best not just for us as individuals, but for the overall
   community
 
 Examples of unacceptable behavior include:
 
-* The use of sexualized language or imagery, and sexual attention or advances of
+- The use of sexualized language or imagery, and sexual attention or advances of
   any kind
-* Trolling, insulting or derogatory comments, and personal or political attacks
-* Public or private harassment
-* Publishing others' private information, such as a physical or email address,
+- Trolling, insulting or derogatory comments, and personal or political attacks
+- Public or private harassment
+- Publishing others' private information, such as a physical or email address,
   without their explicit permission
-* Other conduct which could reasonably be considered inappropriate in a
+- Other conduct which could reasonably be considered inappropriate in a
   professional setting
 
 ### Enforcement Responsibilities

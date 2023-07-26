@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const Navbar = () => {
   return (
     <>
@@ -6,7 +8,9 @@ const Navbar = () => {
           <h1 className="fs-4">The Casters Companion</h1>
         </div>
         <div>
-          <i className="bi bi-person accountIcon fs-4"></i>
+          <Link to="/login">
+            <i className="bi bi-person accountIcon fs-4"></i>
+          </Link>
         </div>
       </div>
     </>

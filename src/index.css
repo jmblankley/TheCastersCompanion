@@ -32,6 +32,10 @@ h2 {
 h3 {
   margin-bottom: 20px;
 }
+*::-webkit-scrollbar {
+  width: 0;
+}
+
 /*** GLOBAL ***/
 /********************/
 /*** UTILITY ***/
@@ -44,6 +48,58 @@ h3 {
   color: white;
   padding: 10px;
   padding-inline: 15px;
+}
+.myButtonInverted {
+  border: 2px solid var(--brand500);
+  box-sizing: border-box;
+  color: var(--brand500);
+  background-color: white;
+  padding: 10px;
+  padding-inline: 15px;
+}
+.noBorderButton {
+  color: var(--brand500);
+  cursor: pointer;
+}
+/* Styling for the modal container */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Styling for the modal content */
+.modalContent {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px;
+  text-align: center;
+}
+
+/* Styling for the close button */
+.closeButton {
+  position: absolute;
+  top: 15px;
+  right: 30px;
+  font-size: 50px;
+  cursor: pointer;
+  color: white;
+}
+
+/* Additional styles for the modal content */
+.modalContent h2 {
+  margin-bottom: 10px;
+}
+
+.modalContent p {
+  margin-bottom: 20px;
 }
 /*** UTILITY ***/
 /********************/
@@ -162,9 +218,11 @@ input[type='text']::placeholder {
 /*** BOTTOM NAV ***/
 /********************/
 /*** MY SPELLS ***/
+.spellbook {
+  margin-top: 20px;
+}
 .spellbook ul {
   list-style: none;
-  margin-top: 20px;
   padding: 0;
   color: var(--brand900);
 }
@@ -197,3 +255,169 @@ input[type='text']::placeholder {
   justify-content: space-between;
 }
 /*** MY SPELLS ***/
+/********************/
+/*** EQUIPPED SPELLS  ***/
+.spellCast {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.spellCast button {
+  border: 1px solid var(--brand500);
+  color: white;
+  padding-inline: 20px;
+  background-color: var(--brand500);
+  box-sizing: border-box;
+  font-weight: 500;
+}
+.spellSlotsContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.spellSlots {
+  display: flex;
+  align-items: center;
+}
+.spellslot {
+  width: 20px;
+  height: 20px;
+  border: 3px solid var(--brand700);
+  margin-right: 5px;
+  z-index: 0;
+  background-color: var(--brand500);
+}
+.emptyspellslot {
+  width: 20px;
+  height: 20px;
+  border: 3px solid var(--brand700);
+  margin-right: 5px;
+  z-index: 0;
+  background-color: white;
+}
+
+input[type='checkbox'] {
+  margin-right: 10px;
+  line-height: normal;
+  width: 20px;
+  height: 20px;
+  border-radius: 0;
+  display: grid;
+  place-content: center;
+}
+
+.spellSlotsContainer h2 {
+  margin: 0;
+  margin-right: 10px;
+}
+.restContainer {
+  display: flex;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  justify-content: space-between;
+  border-bottom: solid 1px var(--brand500);
+}
+.restSlider {
+  display: flex;
+  align-items: center;
+}
+
+.restContainer h2 {
+  margin: 0;
+  margin-right: 20px;
+}
+.restContainer input {
+  width: 30px;
+  border: none;
+}
+.restContainer input:focus {
+  width: 30px;
+  border: none;
+}
+.restContainer button {
+  border: 2px solid var(--brand500);
+  box-sizing: border-box;
+  color: var(--brand500);
+  background-color: white;
+
+  padding-inline: 20px;
+
+  box-sizing: border-box;
+  font-weight: 500;
+}
+/*** EQUIPPED SPELLS  ***/
+/********************/
+/*** LOGIN PAGE ***/
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+}
+
+.login h2 {
+  margin-bottom: 20px;
+}
+
+.login input {
+  margin-bottom: 20px;
+  width: 200px;
+  padding-left: 8px;
+}
+
+.login .form-group {
+  width: 100%;
+}
+
+.login .myButton,
+.login .myButtonInverted {
+  width: 100%;
+  margin-bottom: 20px;
+  max-width: 200px;
+}
+.login a {
+  color: var(--brand500);
+}
+.logout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+}
+/*** LOGIN PAGE ***/
+/********************/
+/*** SIGNUP PAGE ***/
+.signup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+}
+
+.signup h2 {
+  margin-bottom: 20px;
+}
+
+.signup input {
+  margin-bottom: 20px;
+  width: 200px;
+  padding-left: 8px;
+}
+
+.signup .form-group {
+  width: 100%;
+}
+
+.signup .myButton {
+  width: 100%;
+  margin-bottom: 20px;
+  max-width: 200px;
+}
+
+/*** SIGNUP PAGE ***/
+/********************/
+/********************/
+/********************/

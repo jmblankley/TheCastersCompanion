@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { SpellbookContext } from '../context/SpellbookContext';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const SingleSpell = () => {
   const { spellId } = useParams();
@@ -9,6 +10,7 @@ const SingleSpell = () => {
   const API = `https://www.dnd5eapi.co/api/spells`;
 
   const { selectedSpells, addSpellToSpellbook } = useContext(SpellbookContext);
+  const { user } = useAuthContext();
 
   useEffect(() => {
     if (spellId) {
@@ -33,46 +35,62 @@ const SingleSpell = () => {
     }
   }, [API, spellId]);
 
+  // Function to handle saving or removing the spell
   const handleSaveSpell = () => {
-    const isSpellInSpellbook = selectedSpells.some(
-      (selectedSpell) => selectedSpell.index === spell.index
-    );
+    if (user) {
+      const isSpellInSpellbook = selectedSpells.some(
+        (selectedSpell) => selectedSpell.index === spell.index
+      );
 
-    if (isSpellInSpellbook) {
-      // If the spell is already in the spellbook, remove it
-      // Make an HTTP DELETE request to your backend API to remove the spell
-      axios
-        .delete(`/mySpells/${spell.index}`)
-        .then((response) => {
-          console.log('Spell removed from spellbook:', response.data);
-          // Optionally, you can add a toast or notification to show the user that the spell was removed successfully.
-        })
-        .catch((error) => {
-          console.error('Error removing spell from spellbook:', error);
-          // Handle any error, show a notification to the user, etc.
-        });
+      // Set the authorization header with the JWT token
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${user.token}`,
+        },
+      };
+
+      if (isSpellInSpellbook) {
+        // If the spell is already in the spellbook, remove it
+        axios
+          .delete(`/mySpells/${spell.index}`, config)
+          .then((response) => {
+            console.log('Spell removed from spellbook:', response.data);
+          })
+          .catch((error) => {
+            console.error('Error removing spell from spellbook:', error);
+            // Handle any error, show a notification to the user, etc.
+          });
+      } else {
+        // If the spell is not in the spellbook, add it
+        axios
+          .post(
+            '/mySpells',
+            {
+              userId: user.id,
+              index: spell.index,
+              name: spell.name,
+              level: spell.level,
+              school: spell.school,
+              time: spell.time,
+              range: spell.range,
+              duration: spell.duration,
+              description: spell.description,
+            },
+            config
+          )
+          .then((response) => {
+            console.log('Spell added to spellbook:', response.data);
+            // Optionally, you can add a toast or notification to show the user that the spell was saved successfully.
+          })
+          .catch((error) => {
+            console.error('Error saving spell to spellbook:', error);
+            // Handle any error, show a notification to the user, etc.
+          });
+      }
     } else {
-      // If the spell is not in the spellbook, add it
-      // Make an HTTP POST request to your backend API to save the spell
-      axios
-        .post('/mySpells', {
-          index: spell.index,
-          name: spell.name,
-          level: spell.level,
-          school: spell.school,
-          time: spell.time,
-          range: spell.range,
-          duration: spell.duration,
-          description: spell.description,
-        })
-        .then((response) => {
-          console.log('Spell added to spellbook:', response.data);
-          // Optionally, you can add a toast or notification to show the user that the spell was saved successfully.
-        })
-        .catch((error) => {
-          console.error('Error saving spell to spellbook:', error);
-          // Handle any error, show a notification to the user, etc.
-        });
+      // Handle the case when the user is not logged in, e.g., show a login prompt
+      console.log('Please log in to add or remove spells.');
     }
   };
 

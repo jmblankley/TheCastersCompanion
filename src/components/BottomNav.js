@@ -26,7 +26,7 @@ const BottomNav = () => {
               location.pathname === '/equippedspells' ? 'buttonActive' : ''
             }
           >
-            Equpped Spells
+            Equipped Spells
           </Link>
         </div>
       </div>
