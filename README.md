@@ -4,9 +4,7 @@
 
 I recently joined a new DND group and decided on making a Wizard character. Since casting spells is a complex thing I decided to create an app to assist in this. After looking at a couple of the apps on the Android store I was disatisfied. The styling was not the best and they just felt overall bad. The functionality was there for sure, but if I am going to be using an app a lot I want to like the way it looks. This app helps DND characters who cast spells. Spells are one of the more complex things in DND and this app helps simplify it. I was looking for a good project to learn the MERN stack with and this seemed like a complex enough app that I thought it would be a great teacher.
 
-## Table of Contents (Optional)
-
-If your README is long, add a table of contents to make it easy for users to find what they need.
+## Table of Contents
 
 - [Installation](#installation)
 - [Usage](#usage)
