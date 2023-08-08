@@ -15,21 +15,15 @@ If your README is long, add a table of contents to make it easy for users to fin
 
 ## Installation
 
-What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
+IF you would like to just use this app then you can install it as a PWA from this url: https://thecasterscompanion.netlify.app. If you would like to add to this project just create a pull request and I will set it up.
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
-
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
-
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
+This app is meant to be used by DnD players who use casting. You can create an account to store spells from the All Spells to My Spells. As well as Equip these spells, set spell slots and rest.
 
 ## Credits
 
-This app was build solely by me. I used documentation from React, Express, MongoDB, and Node to help me. For authentication I watched a tutorial on YouTube from The Net Ninja.
+This app was build solely by me. I used documentation from React, Express, MongoDB, and Node to help me. For authentication I watched a tutorial on YouTube from The Net Ninja. I also used the D&D 5e API to pull data from. Here is a link to their page: https://www.dnd5eapi.co/.
 
 ## License
 
@@ -56,10 +50,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ---
-
-## Features
-
-If your project has a lot of features, list them here.
 
 ## Contributor Covenant Code of Conduct
 
