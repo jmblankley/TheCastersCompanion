@@ -5,11 +5,11 @@ import { SpellbookContext } from '../context/SpellbookContext';
 import { useAuthContext } from '../hooks/useAuthContext';
 
 const SingleSpell = () => {
-  const { spellId } = useParams();
+  const { spellId, spellIndex } = useParams();
   const [spell, setSpell] = useState({});
   const API = `https://www.dnd5eapi.co/api/spells`;
 
-  const { selectedSpells, addSpellToSpellbook } = useContext(SpellbookContext);
+  const { selectedSpells } = useContext(SpellbookContext);
   const { user } = useAuthContext();
 
   useEffect(() => {

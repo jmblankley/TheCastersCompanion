@@ -6,6 +6,7 @@ import Search from '../components/Search';
 const AllSpells = () => {
   const [spells, setSpells] = useState([]);
   const [filteredSpells, setFilteredSpells] = useState([]);
+  const [isLoading, setIsLoading] = useState(true); // Add loading state
   const API = `https://www.dnd5eapi.co/api/spells`;
 
   const getSpells = () => {
@@ -30,19 +31,22 @@ const AllSpells = () => {
             });
             setSpells(spellsWithData);
             setFilteredSpells(spellsWithData);
+            setIsLoading(false); // Set loading state to false when data is loaded
           })
           .catch((error) => {
             console.error('Error fetching spell details:', error);
+            setIsLoading(false); // Set loading state to false in case of error
           });
       })
       .catch((error) => {
         console.error('Error fetching spell list:', error);
+        setIsLoading(false); // Set loading state to false in case of error
       });
   };
 
   useEffect(() => {
     getSpells();
-  });
+  }, []);
 
   const handleSearch = (searchQuery) => {
     const filteredSpells = spells.filter((spell) =>
@@ -64,15 +68,36 @@ const AllSpells = () => {
             </tr>
           </thead>
           <tbody>
-            {filteredSpells.map((spell) => (
-              <tr key={spell.index}>
-                <td className="fs-6">
-                  <Link to={`/spell/${spell.index}`}>{spell.name}</Link>
+            {isLoading ? (
+              // Display a loading spinner while data is being loaded
+              <tr>
+                <td
+                  colSpan="3"
+                  className="text-center align-middle"
+                  style={{ height: '400px' }}
+                >
+                  <div
+                    className="d-flex justify-content-center align-items-center"
+                    style={{ height: '100%' }}
+                  >
+                    <div className="spinner-border brand500" role="status">
+                      <span className="visually-hidden">Loading...</span>
+                    </div>
+                  </div>
                 </td>
-                <td className="fs-6">{spell.level}</td>
-                <td className="fs-6">{spell.school}</td>
               </tr>
-            ))}
+            ) : (
+              // Render the spells when data is loaded
+              filteredSpells.map((spell) => (
+                <tr key={spell.index}>
+                  <td className="fs-6">
+                    <Link to={`/spell/${spell.index}`}>{spell.name}</Link>
+                  </td>
+                  <td className="fs-6">{spell.level}</td>
+                  <td className="fs-6">{spell.school}</td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>

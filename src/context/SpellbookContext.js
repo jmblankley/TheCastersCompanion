@@ -18,7 +18,6 @@ const SpellbookProvider = ({ children }) => {
           },
         });
         const spellsFromDatabase = response.data;
-        console.log('Fetched spells:', spellsFromDatabase); // Add this console log
         setSelectedSpells(spellsFromDatabase);
       } catch (error) {
         console.error('Error fetching spells from database:', error);

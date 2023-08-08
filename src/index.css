@@ -35,6 +35,9 @@ h3 {
 *::-webkit-scrollbar {
   width: 0;
 }
+.brand500 {
+  color: var(--brand500);
+}
 
 /*** GLOBAL ***/
 /********************/
