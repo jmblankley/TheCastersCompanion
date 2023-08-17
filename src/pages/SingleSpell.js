@@ -5,11 +5,13 @@ import { SpellbookContext } from '../context/SpellbookContext';
 import { useAuthContext } from '../hooks/useAuthContext';
 
 const SingleSpell = () => {
-  const { spellId, spellIndex } = useParams();
+  const { spellId } = useParams();
   const [spell, setSpell] = useState({});
   const API = `https://www.dnd5eapi.co/api/spells`;
+  const [addedToSpellbook, setAddedToSpellbook] = useState(false);
+  const [removedFromSpellbook, setRemovedFromSpellbook] = useState(false);
 
-  const { selectedSpells } = useContext(SpellbookContext);
+  const { selectedSpells, setSelectedSpells } = useContext(SpellbookContext);
   const { user } = useAuthContext();
 
   useEffect(() => {
@@ -35,14 +37,12 @@ const SingleSpell = () => {
     }
   }, [API, spellId]);
 
-  // Function to handle saving or removing the spell
   const handleSaveSpell = () => {
     if (user) {
       const isSpellInSpellbook = selectedSpells.some(
         (selectedSpell) => selectedSpell.index === spell.index
       );
 
-      // Set the authorization header with the JWT token
       const config = {
         headers: {
           'Content-Type': 'application/json',
@@ -51,18 +51,21 @@ const SingleSpell = () => {
       };
 
       if (isSpellInSpellbook) {
-        // If the spell is already in the spellbook, remove it
         axios
           .delete(`/mySpells/${spell.index}`, config)
           .then((response) => {
             console.log('Spell removed from spellbook:', response.data);
+            setRemovedFromSpellbook(true);
+            setSelectedSpells((prevSelectedSpells) =>
+              prevSelectedSpells.filter(
+                (selectedSpell) => selectedSpell.index !== spell.index
+              )
+            );
           })
           .catch((error) => {
             console.error('Error removing spell from spellbook:', error);
-            // Handle any error, show a notification to the user, etc.
           });
       } else {
-        // If the spell is not in the spellbook, add it
         axios
           .post(
             '/mySpells',
@@ -81,15 +84,26 @@ const SingleSpell = () => {
           )
           .then((response) => {
             console.log('Spell added to spellbook:', response.data);
-            // Optionally, you can add a toast or notification to show the user that the spell was saved successfully.
+            setAddedToSpellbook(true);
+            setSelectedSpells((prevSelectedSpells) => [
+              ...prevSelectedSpells,
+              {
+                index: spell.index,
+                name: spell.name,
+                level: spell.level,
+                school: spell.school,
+                time: spell.time,
+                range: spell.range,
+                duration: spell.duration,
+                description: spell.description,
+              },
+            ]);
           })
           .catch((error) => {
             console.error('Error saving spell to spellbook:', error);
-            // Handle any error, show a notification to the user, etc.
           });
       }
     } else {
-      // Handle the case when the user is not logged in, e.g., show a login prompt
       console.log('Please log in to add or remove spells.');
     }
   };
@@ -112,6 +126,7 @@ const SingleSpell = () => {
       <h3>
         <span className="mediumWeight">Description:</span> {spell.description}
       </h3>
+
       <button className="myButton" onClick={handleSaveSpell}>
         {selectedSpells.some(
           (selectedSpell) => selectedSpell.index === spell.index
@@ -119,6 +134,12 @@ const SingleSpell = () => {
           ? 'Remove From Spellbook'
           : 'Add To Spellbook'}
       </button>
+      {addedToSpellbook && (
+        <p className="success">Successfully added spell to My Spells.</p>
+      )}
+      {removedFromSpellbook && (
+        <p className="success">Successfully removed spell from My Spells.</p>
+      )}
     </div>
   );
 };

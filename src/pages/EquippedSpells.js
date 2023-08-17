@@ -5,7 +5,7 @@ import { useAuthContext } from '../hooks/useAuthContext';
 
 const EquippedSpells = () => {
   const { user } = useAuthContext();
-  const { equippedSpells } = useContext(SpellbookContext);
+  const { equippedSpells, setEquippedSpells } = useContext(SpellbookContext);
   const [isSpellSlotsModalOpen, setIsSpellSlotsModalOpen] = useState(false);
   const [isSetRestModalOpen, setIsSetRestModalOpen] = useState(false);
   const [spellSlotsCount, setSpellSlotsCount] = useState(() => {
@@ -21,7 +21,11 @@ const EquippedSpells = () => {
   useEffect(() => {
     localStorage.setItem('spellSlotsCount', spellSlotsCount.toString());
     localStorage.setItem('rest', rest.toString());
-  }, [spellSlotsCount, rest, maxSpellSlots]);
+    const storedEquippedSpells = localStorage.getItem('equippedSpells');
+    if (storedEquippedSpells) {
+      setEquippedSpells(JSON.parse(storedEquippedSpells));
+    }
+  }, [spellSlotsCount, rest, maxSpellSlots, setEquippedSpells]);
 
   const updateSpellSlots = () => {
     setIsSpellSlotsModalOpen(true);
@@ -43,7 +47,7 @@ const EquippedSpells = () => {
     setIsSetRestModalOpen(true);
   };
 
-  const handleCastClick = (spell) => {
+  const handleCastClick = (spell, index) => {
     if (spell > 0) {
       setSpellSlotsCount(spellSlotsCount - 1);
     }
@@ -172,7 +176,7 @@ const EquippedSpells = () => {
                 </div>
                 <div></div>
               </li>
-              {equippedSpells.map((spell) => (
+              {equippedSpells.map((spell, index) => (
                 <li className="fs-4 spellCast" key={spell.index}>
                   <div className="col-5">
                     <Link to={`/spell/${spell.index}`}>{spell.name}</Link>

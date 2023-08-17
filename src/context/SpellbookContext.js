@@ -32,25 +32,34 @@ const SpellbookProvider = ({ children }) => {
   // Function to add a new spell to the spellbook
   const addSpellToSpellbook = (spell) => {
     setSelectedSpells((prevSpells) => [...prevSpells, spell]);
-    console.log('Selected spells:', selectedSpells);
   };
 
-  // Function to equip a spell
   const equipSpell = (spell) => {
     setEquippedSpells((prevEquippedSpells) => {
-      // Check if the spell is already equipped
       const isSpellEquipped = prevEquippedSpells.some(
         (equippedSpell) => equippedSpell.index === spell.index
       );
 
       if (isSpellEquipped) {
-        // Remove the spell from the equippedSpells array
-        return prevEquippedSpells.filter(
+        const updatedEquippedSpells = prevEquippedSpells.filter(
           (equippedSpell) => equippedSpell.index !== spell.index
         );
+
+        localStorage.setItem(
+          'equippedSpells',
+          JSON.stringify(updatedEquippedSpells)
+        );
+
+        return updatedEquippedSpells;
       } else {
-        // Add the spell to the equippedSpells array
-        return [...prevEquippedSpells, spell];
+        const updatedEquippedSpells = [...prevEquippedSpells, spell];
+
+        localStorage.setItem(
+          'equippedSpells',
+          JSON.stringify(updatedEquippedSpells)
+        );
+
+        return updatedEquippedSpells;
       }
     });
   };
@@ -62,6 +71,8 @@ const SpellbookProvider = ({ children }) => {
         equippedSpells,
         addSpellToSpellbook,
         equipSpell,
+        setSelectedSpells,
+        setEquippedSpells,
       }}
     >
       {children}

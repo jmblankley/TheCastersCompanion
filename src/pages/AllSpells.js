@@ -6,7 +6,7 @@ import Search from '../components/Search';
 const AllSpells = () => {
   const [spells, setSpells] = useState([]);
   const [filteredSpells, setFilteredSpells] = useState([]);
-  const [isLoading, setIsLoading] = useState(true); // Add loading state
+  const [isLoading, setIsLoading] = useState(true);
   const API = `https://www.dnd5eapi.co/api/spells`;
 
   const getSpells = () => {
@@ -31,33 +31,53 @@ const AllSpells = () => {
             });
             setSpells(spellsWithData);
             setFilteredSpells(spellsWithData);
-            setIsLoading(false); // Set loading state to false when data is loaded
+            setIsLoading(false);
           })
           .catch((error) => {
             console.error('Error fetching spell details:', error);
-            setIsLoading(false); // Set loading state to false in case of error
+            setIsLoading(false);
           });
       })
       .catch((error) => {
         console.error('Error fetching spell list:', error);
-        setIsLoading(false); // Set loading state to false in case of error
+        setIsLoading(false);
       });
+  };
+
+  const handleSearch = (searchQuery) => {
+    console.log('handleSearch triggered with:', searchQuery);
+    const filteredSpells = spells.filter((spell) =>
+      spell.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    console.log('Filtered Spells after search:', filteredSpells);
+    setFilteredSpells(filteredSpells);
+  };
+
+  const handleFilter = (filters) => {
+    setFilteredSpells((prevFilteredSpells) => {
+      const newFilteredSpells = prevFilteredSpells.filter((spell) => {
+        const levelFilterMatch =
+          !filters.level ||
+          parseInt(spell.level, 10) === parseInt(filters.level, 10);
+        const schoolFilterMatch =
+          !filters.school || spell.school === filters.school;
+        return levelFilterMatch && schoolFilterMatch;
+      });
+
+      return newFilteredSpells;
+    });
+    if (!filters.level && !filters.school) {
+      setFilteredSpells(spells);
+    }
   };
 
   useEffect(() => {
     getSpells();
   }, []);
 
-  const handleSearch = (searchQuery) => {
-    const filteredSpells = spells.filter((spell) =>
-      spell.name.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-    setFilteredSpells(filteredSpells);
-  };
-
   return (
     <>
-      <Search onSearch={handleSearch} />
+      <Search onSearch={handleSearch} onFilter={handleFilter} />
       <div className="container allSpells">
         <table>
           <thead>

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useLogin } from '../hooks/useLogin';
@@ -23,6 +23,10 @@ const Login = () => {
     // Clear the email and password fields after successful login
     setEmail('');
     setPassword('');
+
+    if (!error) {
+      window.location.reload();
+    }
   };
 
   return (
