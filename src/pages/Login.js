@@ -23,10 +23,6 @@ const Login = () => {
     // Clear the email and password fields after successful login
     setEmail('');
     setPassword('');
-
-    if (!error) {
-      window.location.reload();
-    }
   };
 
   return (
