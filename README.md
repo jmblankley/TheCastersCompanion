@@ -13,7 +13,7 @@ I recently joined a new DND group and decided on making a Wizard character. Sinc
 
 ## Installation
 
-IF you would like to just use this app then you can install it as a PWA from this url: https://thecasterscompanion.netlify.app. If you would like to add to this project just create a pull request and I will set it up.
+IF you would like to just use this app then you can install it as a PWA from this url: https://casterscompanion.onrender.com/. If you would like to add to this project just create a pull request and I will set it up.
 
 ## Usage
 
