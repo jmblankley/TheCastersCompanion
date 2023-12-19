@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useLogin } from '../hooks/useLogin';
@@ -12,6 +12,12 @@ const Login = () => {
   const { user } = useAuthContext();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if(user){
+      navigate('/login');
+    }
+  }, [user, navigate])
+
   const handleClick = () => {
     logout();
   };
@@ -24,8 +30,6 @@ const Login = () => {
     // Clear the email and password fields after successful login
     setEmail('');
     setPassword('');
-
-    navigate('/spellbook');
   };
 
   return (
