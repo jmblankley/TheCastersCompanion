@@ -25,7 +25,6 @@ export const useLogin = () => {
         setIsLoading(false);
         setError(json.error);
       } else {
-        console.log('Login successful. User data:', json);
         localStorage.setItem('user', JSON.stringify(json));
         localStorage.setItem('token', json.token);
         dispatch({ type: 'LOGIN', payload: json });
