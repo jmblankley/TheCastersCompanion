@@ -52,7 +52,7 @@ const SingleSpell = () => {
 
       if (isSpellInSpellbook) {
         axios
-          .delete(`/mySpells/${spell.index}`, config)
+          .delete(`https://casterscompanion.onrender.com/mySpells/${spell.index}`, config)
           .then((response) => {
             console.log('Spell removed from spellbook:', response.data);
             setRemovedFromSpellbook(true);
@@ -68,7 +68,7 @@ const SingleSpell = () => {
       } else {
         axios
           .post(
-            '/mySpells',
+            'https://casterscompanion.onrender.com/mySpells',
             {
               userId: user.id,
               index: spell.index,
