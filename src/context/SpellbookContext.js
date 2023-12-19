@@ -13,6 +13,7 @@ const SpellbookProvider = ({ children }) => {
     const fetchSpellsFromDatabase = async () => {
       try {
         const response = await axios.get('/mySpells', {
+          baseURL: 'https://casterscompanionserver.onrender.com/',
           headers: {
             Authorization: `Bearer ${token}`, // Add the token to the Authorization header
           },
