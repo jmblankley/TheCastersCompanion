@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useLogin } from '../hooks/useLogin';
 import { useLogout } from '../hooks/useLogout';
@@ -10,13 +10,6 @@ const Login = () => {
   const { logout } = useLogout();
   const { login, error } = useLogin();
   const { user } = useAuthContext();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if(user){
-      navigate('/login');
-    }
-  }, [user, navigate])
 
   const handleClick = () => {
     logout();
