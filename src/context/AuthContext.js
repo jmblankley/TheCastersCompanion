@@ -26,6 +26,8 @@ export const AuthContextProvider = ({ children }) => {
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
     const token = localStorage.getItem('token');
+    console.log('User from local storage:', user);
+    console.log('Token from local storage:', token);
     if (user) {
       dispatch({ type: 'LOGIN', payload: { user, token } }); // Include the token in the LOGIN action payload
     }

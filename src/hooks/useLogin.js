@@ -23,13 +23,10 @@ export const useLogin = () => {
         setIsLoading(false);
         setError(json.error);
       } else {
-        // Save the user data and token to local storage
+        console.log('Login successful. User data:', json);
         localStorage.setItem('user', JSON.stringify(json));
-        localStorage.setItem('token', json.token); // Assuming the token is present in the API response as 'token'
-
-        // Update auth context with user data
+        localStorage.setItem('token', json.token);
         dispatch({ type: 'LOGIN', payload: json });
-
         setIsLoading(false);
       }
     } catch (error) {
