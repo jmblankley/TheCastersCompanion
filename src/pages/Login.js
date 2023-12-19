@@ -26,8 +26,6 @@ const Login = () => {
     setPassword('');
 
     navigate('/spellbook');
-
-    window.location.reload();
   };
 
   return (
