@@ -6,6 +6,8 @@ I recently joined a new DND group and decided on making a Wizard character. Sinc
 
 This is repo contains only the front end code.
 
+This app is not fully functional yet.
+
 ## Table of Contents
 
 - [Installation](#installation)
