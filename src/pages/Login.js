@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useLogin } from '../hooks/useLogin';
 import { useLogout } from '../hooks/useLogout';
@@ -10,6 +10,7 @@ const Login = () => {
   const { logout } = useLogout();
   const { login, error } = useLogin();
   const { user } = useAuthContext();
+  const navigate = useNavigate();
 
   const handleClick = () => {
     logout();
@@ -23,6 +24,10 @@ const Login = () => {
     // Clear the email and password fields after successful login
     setEmail('');
     setPassword('');
+
+    navigate('/spellbook');
+
+    window.location.reload();
   };
 
   return (
